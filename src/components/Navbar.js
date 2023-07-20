@@ -40,6 +40,12 @@ const Navbar = (props) => {
             localStorage.setItem("query",query)
         }
     }
+    
+    const searchEnter = (e)=>{
+        if (e.key === "Enter") {
+            search()
+        }
+    }
 
     const mobileSearch = ()=>{
         containerRef.current.classList.toggle("hide-container")
@@ -71,7 +77,7 @@ const Navbar = (props) => {
     <div className="center-box">
         <div className="search-box">
           <div className='search-container hide-container' ref={containerRef}>
-          <input type="search" className="search hide-search" placeholder="search" ref={ref}/>
+          <input type="search" className="search hide-search" placeholder="search" ref={ref} onKeyDown = {searchEnter}/>
             <button className="cancle" onClick={closeSearch} ref={closeRef}><img src="/img/close.svg" alt="close" /></button>
           </div>
             <button className="btn pc-search-btn" onClick={search}><img src="/img/search.svg" alt="Search" /></button>
